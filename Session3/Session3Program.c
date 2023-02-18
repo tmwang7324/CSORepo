@@ -12,18 +12,18 @@ int main(int argc, char* argv[]){
 
   printf("\n\n");
  
-  /***********************************************************
+  /***********************************************************Z
    * data type sizes 
    ************************************************************/
-  int max_int = 0;                     /* write the max int in hexadecimal notation */
-  int min_int = 0;                /* write the min int in hexadecimal representation*/
-  short min_sint = 0;                     /* write the minimum short int in hexadecimal representation */
-  short max_sint = 0;                      /* write the maximum short int in hexadecimal representation */
-  long min_lint = 0;      /* write the minimum long int in hexadecimal representation */
-  long max_lint = 0;           /* write the maximum long  int in hexadecimal representation */ 
-  unsigned int max_uint = 0;           /* write the usigned max int in hexadecimal notation */
-  unsigned short max_usint = 0;            /* write the unsigned max short int in hexadecimal notation */
-  unsigned long max_ulint = 0; /* write the unsigned max long int in hexadecimal notation */
+  int max_int = 0x7FFFFFFF;                     /* write the max int in hexadecimal notation */
+  int min_int = 0x80000000;                /* write the min int in hexadecimal representation*/
+  short min_sint = 0x8000;                     /* write the minimum short int in hexadecimal representation */
+  short max_sint = 0x7FFF;                      /* write the maximum short int in hexadecimal representation */
+  long min_lint = 0x80000000;      /* write the minimum long int in hexadecimal representation */
+  long max_lint = 0x7FFFFFFF;           /* write the maximum long  int in hexadecimal representation */ 
+  unsigned int max_uint = 0xFFFFFFFFu;           /* write the usigned max int in hexadecimal notation */
+  unsigned short max_usint = 0xFFFFu;            /* write the unsigned max short int in hexadecimal notation */
+  unsigned long max_ulint = 0xFFFFFFFFu; /* ywrite the unsigned max long int in hexadecimal notation */
   
   printf("max int is %d\n", max_int);
   printf("min int is %d\n", min_int);
@@ -74,19 +74,22 @@ int main(int argc, char* argv[]){
   assert(UINT_MAX == max_uint);
   assert(USHRT_MAX == max_usint);
   assert(ULONG_MAX == max_ulint);
-
+  
   /***********************************************
    * WHY DOES THIS LOOP NEVER END
    *******************************************/ 
   /* write the reasons for the infinite loop as a comment below */
-
+      //The reason that this is an infinite loop is because k will end up being greater than INT_MAX after a few iterations and then overflow.
+      //  Because k is defined as an integer variable, as soon as its value becomes greater than INT_MAX,
+      //  it will subtract the value of INT_MAX from its value and then add it to INT_MIN.  This means that
+      //  k will always be less than or equal to INT_MAX.  In the end, k will remain at a value of 0.
   /*
   int k = 1;
   while (k <= INT_MAX) {
      printf("The current value of k = %ld\n", k);    
      k += k;
-  }
-  */
+  }*/
+  
 
   return (EXIT_SUCCESS);
 }
